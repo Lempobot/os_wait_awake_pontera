@@ -8,8 +8,8 @@ public class OS {
 
     private static final long MINIMUM_TIME_TO_WAIT = 1;
     private static final long JOB_WAKES_UP_ON_MILISECONDS = 0;
-    private static PriorityQueue<JobAndTimePair> sleepingJobs = new PriorityQueue<JobAndTimePair>();
-    private static List<JobAndTimePair> runningJobs = new LinkedList<JobAndTimePair>();
+    private static PriorityQueue<JobAndTimePair> sleepingJobs = new PriorityQueue<>();
+    private static List<JobAndTimePair> runningJobs = new LinkedList<>();
 
     public static PriorityQueue<JobAndTimePair> getSleepingJobs() {
         return sleepingJobs;
@@ -48,7 +48,10 @@ public class OS {
 
     private static void iterateOverPriorityQueue(){
         Iterator<JobAndTimePair> priorityQueueIterator = sleepingJobs.iterator();
-        long timeToRemoveFromSleep = sleepingJobs.peek().getTime();
+        long timeToRemoveFromSleep = 0;
+        if (sleepingJobs.peek() != null) {
+            timeToRemoveFromSleep = sleepingJobs.peek().getTime();
+        }
         while(priorityQueueIterator.hasNext()){
             JobAndTimePair pair = priorityQueueIterator.next();
             if(pair.getTime() == JOB_WAKES_UP_ON_MILISECONDS){

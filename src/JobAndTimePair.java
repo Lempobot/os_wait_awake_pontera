@@ -1,4 +1,3 @@
-import  java.lang.Long;
 public class JobAndTimePair<Job, Long> implements Comparable{
     private Job job;
     private long time;
@@ -14,10 +13,6 @@ public class JobAndTimePair<Job, Long> implements Comparable{
     }
     public long getTime() {
         return time;
-    }
-
-    public void setJob(Job job) {
-        this.job = job;
     }
 
     public void setTime(long time) {
