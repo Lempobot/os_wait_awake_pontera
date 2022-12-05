@@ -1,9 +1,10 @@
 public class Job {
 
-    // Add additional functions and data members as you find fit
-
-    // A function for sleep which called by a job
+    final private long MINIMUM_WAIT_TIME_FOR_JOB = 0;
     public void sleep(long ms)  {
+        if(ms < MINIMUM_WAIT_TIME_FOR_JOB){ //Waiting time can't be negative.
+            ms = MINIMUM_WAIT_TIME_FOR_JOB;
+        }
         OS.sleep(this, ms);
     }
 
